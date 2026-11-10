@@ -1,0 +1,42 @@
+// ForgeGradle 2.1 build for Minecraft 1.8.9 / Forge 11.15.1.2318.
+// Requires: JDK 8 and Gradle 2.14.1 (ForgeGradle 2.1 does not run on newer Gradle versions).
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { name = "forge"; url = "https://maven.minecraftforge.net/" }
+        maven { name = "forge-legacy"; url = "https://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = "1.0.0"
+group = "com.chatheads"
+archivesBaseName = "ChatHeads-1.8.9"
+
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+    options.encoding = "UTF-8"
+}
+
+minecraft {
+    version = "1.8.9-11.15.1.2318-1.8.9"
+    runDir = "run"
+    mappings = "stable_22"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

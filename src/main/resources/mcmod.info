@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "chatheads",
+    "name": "Chat Heads",
+    "description": "Shows the sender's head next to each chat message. Client-side only; works on any server.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "authorList": [],
+    "credits": "Behaviour inspired by the Chat Heads mod on Modrinth (clean-room reimplementation for 1.8.9; no code copied).",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
