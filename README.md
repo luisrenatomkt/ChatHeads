@@ -97,7 +97,9 @@ cabeçalho. Abaixo de `minConfidence` (padrão 0.85) **não há cabeça** — nu
 
 1. Nomes SRG em `ChatReflection`: `field_146253_i` (drawnChatLines), `field_146252_h` (chatLines), `field_146248_b`
    (sentMessages), `field_146250_j` (scrollPos), `field_146251_k` (isScrolled), `field_73840_e` (persistantChatGUI).
-   Se algum falhar, o mod **não crasha**: loga o erro e fica `inactive` (`/chatheads status`).
+   Se o nome falhar, o mod procura o campo por tipo/posição (e registra um WARN no log); só se isso também
+   falhar ele fica `inactive` (`/chatheads status`). *Confirmado em teste real: `field_146248_b` estava errado
+   (o correto é `field_146248_g`); a v1.0.1 já não depende disso.*
 2. `GuiUtilRenderComponents.splitText(...)` (usado em `ChatLineManager.rebuild`).
 3. Origem do chat no vanilla: `translate(2, 20, 0)` (`HeadsGuiNewChat.ORIGIN_X/Y`). Se as cabeças saírem 1–2 px
    deslocadas, ajuste essas constantes.
